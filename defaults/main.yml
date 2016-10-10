@@ -10,4 +10,4 @@
 cloudformation_template_base_path: /templates
 cloudformation_templates: []
 cloudformation_template_encrypt: true
-cloudformation_template_dir: "{{ role_path }}/files/cf-templates/"
+cloudformation_template_dir: "{{ role_path }}/files/cf-templates"

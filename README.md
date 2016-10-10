@@ -32,6 +32,6 @@ cloudformation_templates: []
 cloudformation_template_encrypt: true
 
 # Local path to the template directory.
-cloudformation_template_dir: "{{ role_path }}/files/cf-templates/"
+cloudformation_template_dir: "{{ role_path }}/files/cf-templates"
 ```
 
