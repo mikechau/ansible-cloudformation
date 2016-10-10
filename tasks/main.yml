@@ -1,0 +1,21 @@
+---
+- name: Create templates dir
+  s3:
+    bucket: "{{ cloudformation_s3_bucket }}"
+    object: "{{ cloudformation_template_base_path }}"
+    mode: create
+    region: "{{ cloudformation_region | default(omit) }}"
+    profile: "{{ cloudformation_profile | default(omit) }}"
+
+- name: Upload templates
+  s3:
+    bucket: "{{ cloudformation_s3_bucket }}"
+    object: "{{ cloudformation_template_base_path }}/{{ item }}.template"
+    mode: put
+    region: "{{ cloudformation_region | default(omit) }}"
+    encrypt: "{{ cloudformation_template_encrypt }}"
+    src: "{{ cloudformation_template_dir }}/{{ item }}.template"
+    profile: "{{ cloudformation_profile | default(omit) }}"
+    metadata:
+      Content-Type: application/json
+  with_items: "{{ cloudformation_templates }}"
